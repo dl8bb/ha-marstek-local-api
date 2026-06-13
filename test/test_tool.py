@@ -275,25 +275,25 @@ async def run_set_test_schedules(target_ip: str | None) -> None:
         schedules = [
             {
                 "time_num": 0,
-                "start_time": "08:00",
-                "end_time": "16:00",
-                "week_set": _days_to_week_set(["mon", "tue", "wed", "thu", "fri"]),
-                "power": -2000,  # Negative = charge
+                "start_time": "00:00",
+                "end_time": "04:59",
+                "week_set": _days_to_week_set(["mon", "tue", "wed", "thu", "fri", "sat", "sun"]),
+                "power": -900,  # Negative = charge
                 "enable": 1,
             },
             {
                 "time_num": 1,
-                "start_time": "18:00",
-                "end_time": "22:00",
-                "week_set": _days_to_week_set(["mon", "tue", "wed", "thu", "fri"]),
-                "power": 800,  # Positive = discharge
+                "start_time": "05:00",
+                "end_time": "23:59",
+                "week_set": _days_to_week_set(["mon", "tue", "wed", "thu", "fri", "sat", "sun"]),
+                "power": 237,  # Positive = discharge
                 "enable": 1,
             },
         ]
 
         print("Applying schedules:")
-        print("  Slot 0: 08:00-16:00 Mon-Fri, charge limit 2000W")
-        print("  Slot 1: 18:00-22:00 Mon-Fri, discharge limit 800W")
+        print("  Slot 0: 00:00-04:59 Mon-Sun, charge limit 900W")
+        print("  Slot 1: 05:00-23:59 Mon-Sun, discharge limit 237W")
         print()
 
         failed_slots: list[int] = []
